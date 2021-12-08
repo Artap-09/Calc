@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  PSQL:
+    container_name: PSQL
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: qwerty
+    networks:
+      - mynet
+
+  MONGO:
+    container_name: MONGO
+    image: mongo:latest
+    networks:
+      - mynet
+
+  calculator:
+    build:  ./docker/calculator
+    container_name: CALC
+    environment:
+      PSQL_CONTAINER: "PSQL"
+      PSQL_PASS: "qwerty"
+      PSQL_USER: "postgres"
+      MONGO_CONTAINER: "MONGO"
+    ports:
+      - 4969:4969
+    networks:
+      - mynet
+
+  reder:
+    container_name: Reader
+    build: ./docker/reader
+    environment:
+      PSQL_CONTAINER: "PSQL"
+      PSQL_PASS: "qwerty"
+      PSQL_USER: "postgres"
+      MONGO_CONTAINER: "MONGO"
+    ports:
+      - 4979:4979
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    name: mynet
+    driver: bridge
