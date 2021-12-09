@@ -55,7 +55,7 @@ func handlePastJson(writer http.ResponseWriter, request *http.Request) {
 	}
 	defer db.Close()
 
-	_, err = db.Exec("insert into $4 values ($1,$2,$3)", ab.A, ab.B, ab.Sum, "calculator")
+	_, err = db.Exec("insert into calculator values ($1,$2,$3)", ab.A, ab.B, ab.Sum)
 	if err != nil {
 		panic(err)
 	}

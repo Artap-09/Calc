@@ -3,7 +3,7 @@ version: "3.8"
 services:
   PSQL:
     container_name: PSQL
-    image: postgres:latest
+    image: postgres:14
     environment:
       POSTGRES_PASSWORD: qwerty
     networks:
@@ -11,7 +11,7 @@ services:
 
   MONGO:
     container_name: MONGO
-    image: mongo:latest
+    image: mongo:5
     networks:
       - mynet
 
@@ -28,7 +28,7 @@ services:
     networks:
       - mynet
 
-  reder:
+  reader:
     container_name: Reader
     build: ./docker/reader
     environment:

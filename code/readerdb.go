@@ -102,7 +102,7 @@ func readDB(writer http.ResponseWriter, request *http.Request) {
 		}
 		defer database.Close()
 
-		rows, err := database.Query("select * from $3 where sum >= $1 and sum < $2", req.First, req.Last, "calculator")
+		rows, err := database.Query("select * from calculator where sum >= $1 and sum < $2", req.First, req.Last)
 		if err != nil {
 			panic(err)
 		}
