@@ -27,7 +27,7 @@ Creating Reader ... done
 
 ```sql
 create database mysum;
-\c mysum
+\c mysum;
 create table calculator(
     A   int,
     B   int,
