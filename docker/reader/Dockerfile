@@ -6,6 +6,6 @@ ENV PSQL_PASS="qwerty"
 ENV PSQL_USER="postgres"
 ENV MONGO_CONTAINER="MONGO"
 ADD readerdb .
-RUN chmod u+x reader
+RUN chmod u+x readerdb
 EXPOSE 4979
 CMD /readerdb
